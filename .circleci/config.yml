@@ -11,5 +11,12 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build -t dbt .
+            docker build -t dbt:latest .
+      - deploy:
+          name: Deploy docker image
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker tag dbt:latest $DOCKER_USER/dbt:latest
+            docker push $DOCKER_USER/dbt:latest
+
           
