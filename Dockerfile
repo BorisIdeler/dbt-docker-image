@@ -1,6 +1,6 @@
 FROM python:3.9.0-buster
 
-RUN apt-get install -y git libpq-dev python-dev python3-pip && \
+RUN apt-get install -y git libpq-dev python3-pip && \
     apt-get remove -y python-cffi && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
