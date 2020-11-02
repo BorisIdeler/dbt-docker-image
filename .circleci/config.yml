@@ -16,7 +16,9 @@ jobs:
           name: Deploy docker image
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            docker tag dbt:$CIRCLE_TAG $DOCKER_USER/dbt:$CIRCLE_TAG
             docker tag dbt:latest $DOCKER_USER/dbt:latest
+            docker push $DOCKER_USER/dbt:$CIRCLE_TAG
             docker push $DOCKER_USER/dbt:latest
 
 workflows:
