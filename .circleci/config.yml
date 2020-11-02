@@ -19,4 +19,9 @@ jobs:
             docker tag dbt:latest $DOCKER_USER/dbt:latest
             docker push $DOCKER_USER/dbt:latest
 
-          
+workflows:
+  build:
+    jobs:
+      - build:
+          context:
+            - docker
